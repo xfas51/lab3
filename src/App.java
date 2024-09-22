@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 public class App {
@@ -9,6 +10,16 @@ public class App {
         List<String> students = readStudentsFromFile("students.txt");
         for (String student : students) {
             System.out.println(student);}
+
+            int groupSize = 2; 
+            List<List<String>> groups = createRandomGroups(students, groupSize);
+            
+            for (List<String> group : groups) {
+                System.out.println(groups);
+        }
+
+        System.out.println("end of the code!");
+
 
     }
     public static List<String> readStudentsFromFile(String filename) {
@@ -24,6 +35,18 @@ public class App {
         }
 
         return students;
+    }
+
+    public static List<List<String>> createRandomGroups(List<String> students, int groupSize) {
+        Collections.shuffle(students); // Shuffle the student list
+        List<List<String>> groups = new ArrayList<>();
+        
+        for (int i = 0; i < students.size(); i += groupSize) {
+            int end = Math.min(i + groupSize, students.size());
+            groups.add(new ArrayList<>(students.subList(i, end)));
+        }
+        
+        return groups;
     }
 
 
