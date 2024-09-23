@@ -17,8 +17,7 @@ public class App {
         for (List<String> group : groups) {
             System.out.println(groups);
         }
-    
-
+        System.out.println("end of the code");
     }
     public static List<String> readStudentsFromFile(String filename) {
         List<String> students = new ArrayList<>();
